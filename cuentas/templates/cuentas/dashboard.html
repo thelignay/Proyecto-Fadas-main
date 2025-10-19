@@ -1,0 +1,35 @@
+{% extends 'cuentas/base.html' %}
+
+{% block title %}Priorly | Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-wrapper">
+    <header class="dashboard-header">
+        <h1>Hola, {{ user.first_name|default:user.username }} 👋</h1>
+        <p>Tu espacio personalizado para gestionar apuntes, repasar con flashcards y mantener tu calendario académico al día.</p>
+    </header>
+
+    <div class="card-grid">
+        <a class="dashboard-card" href="/apuntes/crear/">
+            <div class="card-media" style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80');"></div>
+            <h3>Apuntes</h3>
+            <p>Guarda y organiza tus apuntes para consultarlos cuando los necesites.</p>
+        </a>
+        <a class="dashboard-card" href="/flashcard/">
+            <div class="card-media" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80');"></div>
+            <h3>Flashcards</h3>
+            <p>Refuerza tu memoria con sesiones rápidas y dinámicas de repaso.</p>
+        </a>
+        <a class="dashboard-card" href="/calendario/">
+            <div class="card-media" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80');"></div>
+            <h3>Calendario</h3>
+            <p>Planifica entregas, exámenes y eventos importantes sin perder detalle.</p>
+        </a>
+    </div>
+
+    <section id="configuracion" class="feature-section">
+        <h2 class="section-title">Configuración rápida</h2>
+        <p class="section-description">Personaliza tu experiencia en Priorly ajustando tus recordatorios, objetivos de estudio y la apariencia del dashboard. Esta sección estará disponible muy pronto.</p>
+    </section>
+</section>
+{% endblock %}
