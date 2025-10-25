@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Apunte - Priorly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2d2237;
+            color: white;
+            font-family: 'Baloo 2', sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #d893e8;
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            resize: vertical;
+            transition: all 0.3 ease;
+        }
+
+        textarea {
+            height: 300px;
+            width: 1000px;
+        }
+
+        button {
+            background-color: #8c62a0;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #553e64;
+        }
+         .boton-volver {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 20px;
+            background-color: #8c62a0;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            width: fit-content;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .boton-volver:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(142, 68, 173, 0.4);
+        }
+        
+        .timer-container {
+            position: absolute;
+            top: 100px;
+            right: 60px;
+            margin-top: 40px;
+            background: #553e64;
+            padding: 25px;
+            border-radius: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        .timer-display {
+            font-size: 36px;
+            color: #d893e8;
+            margin-bottom: 15px;
+        }
+
+        .timer-botones button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #8c62a0;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .timer-botones button:hover {
+            transform: translateY(-3px);
+            background-color: #ffd5f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crear Apunte</h1>
+
+    <a href="{% url 'home' %}" class="boton-volver">⬅ Volver a Mis Apuntes</a>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Apunte</button>
+    </form>
+
+    <div class="timer-container">
+        <div class="timer-display" id="timer">25:00</div>
+        <div class="timer-botones">
+            <button id="startpause">Iniciar</button>
+            <button id="reset">Reiniciar</button>
+        </div>
+    </div>
+
+    <script src="{% static 'apuntes/timer.js' %}"></script>
+</body>
+</html>
